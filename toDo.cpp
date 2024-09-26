@@ -100,8 +100,8 @@ int main() {
             TodoItem newTodo;
             bool added=false;
            int id = newTodo.create(input_description);
-            if(todoItems.empty()){
-            todoItems.push_back(newTodo);
+            if(todoItems.empty() || id==1){
+            todoItems.push_front(newTodo);
             added=true;
             }
             
