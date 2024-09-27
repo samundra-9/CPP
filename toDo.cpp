@@ -26,13 +26,9 @@ class TodoItem{
         // }
         // return true;
 
-        if(id >=1 && id <= 20){
-            break;
-        }
-        else{
-            cout<<"in between (1-20)"<<endl;
-
-        }
+        if(id >=1 && id <= 20) break;
+        
+        else cout<<"in between (1-20)"<<endl;
 
     }
     return id;
@@ -99,8 +95,10 @@ int main() {
             getline(cin,input_description);
             TodoItem newTodo;
             bool added=false;
+            //changes required
+            auto beginId=todoItems.begin();
            int id = newTodo.create(input_description);
-            if(todoItems.empty() || id==1){
+            if(todoItems.empty() || id<=beginId->getId()){
             todoItems.push_front(newTodo);
             added=true;
             }
@@ -111,6 +109,7 @@ int main() {
             if(it->getId() >= id){
                 todoItems.insert(it,newTodo);
                 added=true;
+                break;
             }
             }
             }
